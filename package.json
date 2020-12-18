@@ -1,0 +1,52 @@
+{
+	"name": "doniai-tools",
+	"version": "0.1.0",
+	"private": true,
+	"main": "electron/dev/main.js",
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"build": "vue-cli-service build",
+		"electron-dev": "node electron/config/electron-run-dev.js",
+		"electron-build": "vue-cli-service build && node electron/config/electron-build-pro.js && electron-builder --dir"
+	},
+	"build": {
+		"productName": "多尼爱助手",
+		"appId": "com.test",
+		"asar": false,
+		"directories": {
+			"output": "build/electron-build"
+		},
+		"files": [
+			"build/vue-build/**/*"
+		],
+		"win": {
+			"icon": "build/vue-build/img/ico.ico"
+		}
+	},
+	"description": "这是一款个人工具助手软件",
+	"author": {
+		"name": "livissnack",
+		"email": "brucesnack@outlook.com"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome-free": "^5.15.1",
+		"artplayer-vue": "^3.5.27",
+		"buefy": "^0.9.4",
+		"core-js": "^3.6.5",
+		"flv.js": "^1.5.0",
+		"hls.js": "^0.14.17",
+		"mpvue-calendar-rzt": "^1.0.3-beta",
+		"vue": "^2.6.11",
+		"vue-router": "^3.2.0"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "~4.5.0",
+		"@vue/cli-plugin-router": "~4.5.0",
+		"@vue/cli-service": "~4.5.0",
+		"electron": "^11.1.0",
+		"electron-builder": "^22.8.0",
+		"less": "^3.13.0",
+		"less-loader": "^7.1.0",
+		"vue-template-compiler": "^2.6.11"
+	}
+}
