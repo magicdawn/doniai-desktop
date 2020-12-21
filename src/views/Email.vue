@@ -31,7 +31,7 @@
           </div>
         </div>
       </aside>
-      <div id="" class="message-feed messages hero is-fullheight">
+      <div class="message-feed messages hero is-fullheight">
         <div class="action-buttons">
           <div class="control is-grouped">
             <a class="button is-small"><i class="fa fa-chevron-down"></i></a>
@@ -43,15 +43,6 @@
               ><i class="fa fa-exclamation-circle"></i
             ></a>
             <a class="button is-small"><i class="fa fa-trash"></i></a>
-          </div>
-          <div class="control is-grouped">
-            <a class="button is-small"><i class="fa fa-folder"></i></a>
-            <a class="button is-small"><i class="fa fa-tag"></i></a>
-          </div>
-          <div class="control is-grouped pg">
-            <div class="title">1-10 of 100</div>
-            <a class="button is-link"><i class="fa fa-chevron-left"></i></a>
-            <a class="button is-link"><i class="fa fa-chevron-right"></i></a>
           </div>
         </div>
         <div id="inbox-messages" class="inbox-messages">

@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="ls-section-btn">
-        <div>
+        <div class="done-btn">
           <button
             class="button is-success is-small is-rounded is-fullwidth btn-content-center"
           >
@@ -274,5 +274,9 @@ export default {
   &:hover {
     cursor: pointer;
   }
+}
+
+.done-btn {
+  margin-top: 20px;
 }
 </style>

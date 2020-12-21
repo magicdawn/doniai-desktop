@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="ls-section-btn">
-        <div>
+        <div class="file-btn">
           <button class="button is-success is-small is-rounded">
             <span class="icon is-small">
               <i class="fas fa-upload"></i>
@@ -461,5 +461,9 @@ export default {
 
 .has-sticky-header {
   height: 600px!important;
+}
+
+.file-btn {
+  margin-top: 20px;
 }
 </style>
