@@ -23,21 +23,20 @@
         <div class="ls-title">
           <span class="ls-text">筱盘</span>
           <span class="ls-more">
-            <svg
-              t="1608196309455"
-              class="icon"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="1304"
-              width="200"
-              height="200"
-            >
-              <path
-                d="M195.648 448c35.392 0 64 28.608 64 64s-28.608 64-64 64-64-28.608-64-64S160.256 448 195.648 448L195.648 448zM508.352 448c-35.392 0-64 28.608-64 64s28.608 64 64 64 64-28.608 64-64S543.744 448 508.352 448L508.352 448zM828.352 448c-35.392 0-64 28.608-64 64s28.608 64 64 64 64-28.608 64-64S863.744 448 828.352 448L828.352 448z"
-                p-id="1305"
-              ></path>
-            </svg>
+            <div>
+              <b-dropdown aria-role="list" position="is-bottom-left">
+                <more theme="outline" size="24" fill="#333" slot="trigger" role="button"/>
+                <b-dropdown-item aria-role="listitem">文件动态</b-dropdown-item>
+                <b-dropdown-item aria-role="listitem">外链管理</b-dropdown-item>
+                <b-dropdown-item aria-role="listitem">查看容量</b-dropdown-item>
+                <hr class="dropdown-divider" aria-role="menuitem">
+                <b-dropdown-item aria-role="listitem">添加快捷方式</b-dropdown-item>
+                <hr class="dropdown-divider" aria-role="menuitem">
+                <b-dropdown-item aria-role="listitem">帮助</b-dropdown-item>
+                <hr class="dropdown-divider" aria-role="menuitem">
+                <b-dropdown-item aria-role="listitem">刷新页面</b-dropdown-item>
+              </b-dropdown>
+            </div>
           </span>
         </div>
         <div class="ls-menu-box">
@@ -88,37 +87,94 @@
       </div>
 
       <div class="ls-section-table">
-        <b-table
-          :data="fileList"
-          :columns="checkableColumns"
-          sticky-header
-          checkable
-          sticky-checkbox
-        ></b-table>
-        <!-- <table class="table is-fullwidth">
-          <thead>
-            <tr>
-              <th>文件名称</th>
-              <th>最近使用</th>
-              <th>大小</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in fileList" :key="index">
-              <th>{{item.name}}</th>
-              <td>
-                <a
-                  href="#"
-                  title="Leicester City F.C."
-                  >{{item.time}}</a
-                >
-              </td>
-              <td>{{item.size}}</td>
-              <td>...</td>
-            </tr>
-          </tbody>
-        </table> -->
+        <div class="b-table">
+          <div class="table-wrapper has-mobile-cards has-sticky-header">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="checkbox-cell is-sticky">
+                    <label class="b-checkbox checkbox"
+                      ><input
+                        type="checkbox"
+                        true-value="true"
+                        value="false"/><span class="check"></span
+                      ><span class="control-label"></span
+                    ></label>
+                  </th>
+                  <th class="" style="width: 40px;">
+                    <div class="th-wrap is-numeric">
+                      <span class="is-relative">
+                        ID
+                      </span>
+                    </div>
+                  </th>
+                  <th class="">
+                    <div class="th-wrap">
+                      <span class="is-relative">
+                        文件名称
+                      </span>
+                    </div>
+                  </th>
+                  <th class="">
+                    <div class="th-wrap">
+                      <span class="is-relative">
+                        最近使用
+                      </span>
+                    </div>
+                  </th>
+                  <th class="">
+                    <div class="th-wrap">
+                      <span class="is-relative">
+                        大小
+                      </span>
+                    </div>
+                  </th>
+                  <th class="">
+                    <div class="th-wrap">
+                      <span class="is-relative">
+                        操作
+                      </span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr draggable="false">
+                  <td class="checkbox-cell is-sticky">
+                    <label class="b-checkbox checkbox"
+                      ><input
+                        type="checkbox"
+                        true-value="true"
+                        value="false"/><span class="check"></span
+                      ><span class="control-label"></span
+                    ></label>
+                  </td>
+                  <td data-label="ID" class="has-text-right"><span>11</span></td>
+                  <td data-label="文件名称" class="">
+                    <span>夜鹰助手.docx</span>
+                  </td>
+                  <td data-label="最近使用" class="">
+                    <span>2020/12/17 17:44:45</span>
+                  </td>
+                  <td data-label="大小" class=""><span>11.45kb</span></td>
+                  <td data-label="操作" class="">
+                    <div>
+                      <b-dropdown aria-role="list" position="is-bottom-left">
+                        <more theme="outline" size="24" fill="#333" slot="trigger" role="button"/>
+                        <b-dropdown-item aria-role="listitem">转为副本</b-dropdown-item>
+                        <b-dropdown-item aria-role="listitem">下载</b-dropdown-item>
+                        <hr class="dropdown-divider" aria-role="menuitem">
+                        <b-dropdown-item aria-role="listitem">云打印</b-dropdown-item>
+                        <hr class="dropdown-divider" aria-role="menuitem">
+                        <b-dropdown-item aria-role="listitem">删除</b-dropdown-item>
+                      </b-dropdown>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -129,13 +185,22 @@
 import ChatOperate from '@/components/ChatOperate.vue'
 import ChatContent from '@/components/ChatContent.vue'
 import ChatItem from '@/components/ChatItem.vue'
+import {More, DEFAULT_ICON_CONFIGS} from '@icon-park/vue'
+const IconConfig = {...DEFAULT_ICON_CONFIGS, prefix: 'icon'}
+
 
 export default {
-  name: 'Home',
+  name: 'File',
+  provide () {
+    return {
+      ICON_CONFIGS: IconConfig
+    }
+  },
   components: {
     ChatOperate,
     ChatContent,
     ChatItem,
+    More
   },
   data() {
     return {
@@ -317,7 +382,7 @@ export default {
           numeric: true,
           sticky: false,
         },
-          {
+        {
           field: 'name',
           label: '文件名称',
         },
@@ -332,7 +397,7 @@ export default {
         {
           field: '',
           label: '操作',
-        }
+        },
       ]
     },
   },
@@ -460,7 +525,7 @@ export default {
 }
 
 .has-sticky-header {
-  height: 600px!important;
+  height: 600px !important;
 }
 
 .file-btn {

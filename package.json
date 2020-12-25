@@ -30,6 +30,7 @@
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^5.15.1",
+		"@icon-park/vue": "^1.1.5-alpha.0",
 		"artplayer-vue": "^3.5.27",
 		"buefy": "^0.9.4",
 		"core-js": "^3.6.5",

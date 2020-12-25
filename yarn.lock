@@ -967,6 +967,14 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@icon-park/vue@^1.1.5-alpha.0":
+  version "1.1.5-alpha.0"
+  resolved "https://registry.npm.taobao.org/@icon-park/vue/download/@icon-park/vue-1.1.5-alpha.0.tgz#caf83d52619020aa255834974ad26a1e1a58de05"
+  integrity sha1-yvg9UmGQIKolWDSXStJqHhpY3gU=
+  dependencies:
+    "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
+    csstype "^3.0.3"
+
 "@intervolga/optimize-cssnano-plugin@^1.0.5":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@intervolga/optimize-cssnano-plugin/-/optimize-cssnano-plugin-1.0.6.tgz#be7c7846128b88f6a9b1d1261a0ad06eb5c0fdf8"
@@ -3221,6 +3229,11 @@ csstype@^2.6.8:
   version "2.6.14"
   resolved "https://registry.npm.taobao.org/csstype/download/csstype-2.6.14.tgz?cache=0&sync_timestamp=1605258454930&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcsstype%2Fdownload%2Fcsstype-2.6.14.tgz#004822a4050345b55ad4dcc00be1d9cf2f4296de"
   integrity sha1-AEgipAUDRbVa1NzAC+HZzy9Clt4=
+
+csstype@^3.0.3:
+  version "3.0.5"
+  resolved "https://registry.npm.taobao.org/csstype/download/csstype-3.0.5.tgz?cache=0&sync_timestamp=1605258454930&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcsstype%2Fdownload%2Fcsstype-3.0.5.tgz#7fdec6a28a67ae18647c51668a9ff95bb2fa7bb8"
+  integrity sha1-f97GoopnrhhkfFFmip/5W7L6e7g=
 
 cyclist@^1.0.1:
   version "1.0.1"

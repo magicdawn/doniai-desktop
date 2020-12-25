@@ -235,4 +235,16 @@ body {
     }
   }
 }
+
+.dropdown-menu {
+  min-width: 6rem !important;
+  .dropdown-content {
+    padding-bottom: 0;
+    padding-top: 0;
+    text-align: left;
+    .dropdown-divider {
+      margin: 0 !important;
+    }
+  }
+}
 </style>
