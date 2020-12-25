@@ -49,6 +49,11 @@ Vue.use(VueRouter)
     path: '/work',
     name: 'Editor',
     component: () => import('../views/Editor.vue')
+  },
+  {
+    path: '/address_book',
+    name: 'AddressBook',
+    component: () => import('../views/AddressBook.vue')
   }
 ]
 

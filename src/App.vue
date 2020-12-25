@@ -32,7 +32,7 @@
             </router-link>
           </li>
           <li>
-            <router-link to="" class="ls-menu-item">
+            <router-link to="/address_book" class="ls-menu-item">
               <i class="fas fa-address-book"></i>
               <span>通讯录</span>
             </router-link>
@@ -117,8 +117,9 @@ export default {
 </script>
 
 <style lang="less">
-body {
-  overflow: hidden!important;
+::-webkit-scrollbar{
+  width: 5px;
+  height: 1px;
 }
 
 #app {
@@ -127,7 +128,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   height: 100%;
-  overflow: hidden;
 }
 
 .pd2 {

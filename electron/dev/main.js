@@ -12,7 +12,7 @@ function createWindow() {
   const win = new BrowserWindow({
     icon: path.join(__dirname, 'img/ico.ico'),
     width: 1200,
-    height: 820,
+    height: 812,
     transparent: true,
     frame: false,
     thickFrame: true,

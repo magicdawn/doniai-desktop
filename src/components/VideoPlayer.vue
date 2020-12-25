@@ -54,8 +54,15 @@ export default {
       required: false
     }
   },
+  watch: {
+    video_url: function(newVal, oldVal) {
+      console.log(newVal)
+      this.options.url = newVal
+    }
+  },
   methods: {
     getInstance(ins) {
+      ins.url = this.options.url
       console.log(ins);
     },
     deviceType() {
