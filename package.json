@@ -10,8 +10,10 @@
 		"electron-build": "vue-cli-service build && node electron/config/electron-build-pro.js && electron-builder --dir"
 	},
 	"build": {
-		"productName": "多尼爱助手",
+		"productName": "doniai-tools",
 		"appId": "com.test",
+		"copyright": "doniai",
+		"compression": "store",
 		"asar": false,
 		"directories": {
 			"output": "build/electron-build"
@@ -37,6 +39,7 @@
 		"flv.js": "^1.5.0",
 		"hls.js": "^0.14.17",
 		"mpvue-calendar-rzt": "^1.0.3-beta",
+		"vditor": "^3.7.3",
 		"vue": "^2.6.11",
 		"vue-router": "^3.2.0"
 	},

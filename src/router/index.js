@@ -44,6 +44,11 @@ Vue.use(VueRouter)
     path: '/calendar',
     name: 'Calendar',
     component: () => import('../views/Calendar.vue')
+  },
+  {
+    path: '/work',
+    name: 'Editor',
+    component: () => import('../views/Editor.vue')
   }
 ]
 

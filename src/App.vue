@@ -26,16 +26,16 @@
             </router-link>
           </li>
           <li>
-            <a href="/work" class="ls-menu-item">
+            <router-link to="/work" class="ls-menu-item">
               <i class="fas fa-globe-europe"></i>
               <span>工作</span>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="" class="ls-menu-item">
+            <router-link to="" class="ls-menu-item">
               <i class="fas fa-address-book"></i>
               <span>通讯录</span>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
