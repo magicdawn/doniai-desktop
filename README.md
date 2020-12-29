@@ -1,28 +1,61 @@
-# doniai-tools
-Vue 集成 electron Demo 项目
+<h1 align="center">Doniai Desktop Tools</h1>
 
-1.如果要在自生项目中使用的话，可直接将 electron 目录拷贝到自生项目根目录中
+<p align="center">:tada: 基于Electron开发个人工具助手软件。</p>
 
-2.在 package.json 配置中调整配置
+![Build Status](https://img.shields.io/travis/livissnack/doniai-desktop)
+![Version](https://img.shields.io/github/package-json/v/livissnack/doniai-desktop)
+[![Issues](https://img.shields.io/github/issues/livissnack/doniai-desktop.svg)](https://github.com/livissnack/doniai-desktop/issues)
+![Forks](https://img.shields.io/github/forks/livissnack/doniai-desktop.svg)
 
-  2.1 添加 scripts 脚本命令
+## 安装
 
-    "electron-dev": "node electron/config/electron-run-dev.js",
-    "electron-build": "vue-cli-service build && node electron/config/electron-build-pro.js && electron-builder --dir"
-    
-  2.2 electron build 路径配置
-  
-    "directories": {
-      "output": "build/electron-build"
-    }
-    
-    "files": [
-      "build/vue-build/**/*"
-    ]
-    
-3.更改 vue 配置
-    
-    // 这个值也可以被设置为相对路径 ('./')，这样所有的资源都会被链接为相对路径，这样打出来的包可以被部署在任意路径。
-    publicPath: './',
-    // 输出文件目录 - 指定 build/vue-build
-    outputDir: 'build/vue-build'
+```sh
+$ git clone git@github.com:livissnack/doniai-desktop.git new_name
+$ cd new_name
+$ yarn install
+```
+
+## 配置
+
+在使用本应用之前，你需要去 electron/config 目录下进行相应的配置
+
+## 使用
+
+```node
+$ yarn electron-dev
+```
+
+- [浏览器访问 http://localhost:8000](http://localhost:8000)
+
+## 部署
+
+### Exe软件 打包编译
+
+```node
+$ cd new_name
+$ yarn electron-build
+```
+
+### 页面效果
+
+#### 聊天功能
+![effect](/example/images/1.png)
+
+#### 文件管理
+![effect](/example/images/2.png)
+
+#### 个人笔记
+![effect](/example/images/3.png)
+
+#### 待办事项
+![effect](/example/images/4.png)
+
+## 所用依赖，感谢这些好用的扩展包
+
+- [Electron](https://www.electronjs.org/)
+- [IconPark](http://iconpark.bytedance.com/)
+- [ArtPlayer](https://artplayer.org/)
+
+## License
+
+the MIT License, http://livissnack.mit-license.org
