@@ -18,6 +18,12 @@ $ yarn install
 ## 配置
 
 在使用本应用之前，你需要去 electron/config 目录下进行相应的配置
+```
+说明注意事项：
+1、目前只配置了windows打包适配
+2、项目还在迭代开发阶段
+3、个人兴趣使然的一个项目
+```
 
 ## 使用
 
@@ -25,9 +31,7 @@ $ yarn install
 $ yarn electron-dev
 ```
 
-- [浏览器访问 http://localhost:8000](http://localhost:8000)
-
-## 部署
+## 打包
 
 ### Exe软件 打包编译
 
