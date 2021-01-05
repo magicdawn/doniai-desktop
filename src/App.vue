@@ -28,13 +28,19 @@
           <li>
             <router-link to="/work" class="ls-menu-item">
               <i class="fas fa-globe-europe"></i>
-              <span>工作</span>
+              <span>笔记</span>
             </router-link>
           </li>
           <li>
             <router-link to="/address_book" class="ls-menu-item">
               <i class="fas fa-address-book"></i>
               <span>通讯录</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/tools" class="ls-menu-item">
+              <i class="fas fa-hammer"></i>
+              <span>工具</span>
             </router-link>
           </li>
         </ul>
@@ -168,7 +174,7 @@ export default {
 }
 
 .side-middle {
-  margin-top: 320px;
+  margin-top: 266px;
   width: 100%;
 }
 

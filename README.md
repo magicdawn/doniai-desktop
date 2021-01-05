@@ -7,6 +7,15 @@
 [![Issues](https://img.shields.io/github/issues/livissnack/doniai-desktop.svg)](https://github.com/livissnack/doniai-desktop/issues)
 ![Forks](https://img.shields.io/github/forks/livissnack/doniai-desktop.svg)
 
+## 说明
+
+```
+说明注意事项：
+1、目前只配置了windows打包适配
+2、项目还在迭代开发阶段
+3、个人兴趣使然的一个项目
+```
+
 ## 安装
 
 ```sh
@@ -18,12 +27,6 @@ $ yarn install
 ## 配置
 
 在使用本应用之前，你需要去 electron/config 目录下进行相应的配置
-```
-说明注意事项：
-1、目前只配置了windows打包适配
-2、项目还在迭代开发阶段
-3、个人兴趣使然的一个项目
-```
 
 ## 使用
 

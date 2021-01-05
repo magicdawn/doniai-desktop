@@ -4,7 +4,7 @@ const path = require('path')
 let appTray = null
 const winURL =
   process.env.NODE_ENV === 'development'
-    ? `http://localhost:8080`
+    ? `http://localhost:8081`
     : path.join('file://', __dirname, 'index.html')
 
 function createWindow() {
@@ -44,6 +44,10 @@ function createWindow() {
   ipcMain.on('window-close', () => {
     console.log('do close')
     win.hide()
+  })
+
+  ipcMain.on('window-change-size', () => {
+    win.setSize(1200, 812)
   })
 
   if (process.platform === 'win32') {
