@@ -4,7 +4,7 @@ const path = require('path')
 let appTray = null
 const winURL =
   process.env.NODE_ENV === 'development'
-    ? `http://localhost:8081`
+    ? `http://localhost:8080`
     : path.join('file://', __dirname, 'index.html')
 
 function createWindow() {
