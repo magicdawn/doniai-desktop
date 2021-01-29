@@ -1909,10 +1909,13 @@ array-unique@^0.3.2:
   resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
   integrity sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=
 
-artplayer-vue@^3.5.27:
+artplayer@^3.5.27:
   version "3.5.27"
-  resolved "https://registry.npm.taobao.org/artplayer-vue/download/artplayer-vue-3.5.27.tgz#d2dbd4bbb4e285151eb1c361b1cb803b1e453dd5"
-  integrity sha1-0tvUu7TihRUescNhscuAOx5FPdU=
+  resolved "https://registry.npm.taobao.org/artplayer/download/artplayer-3.5.27.tgz#823206b07fc08f8528829d3543ae72170abffa83"
+  integrity sha1-gjIGsH/Aj4Uogp01Q65yFwq/+oM=
+  dependencies:
+    option-validator "^2.0.6"
+    screenfull "^5.0.2"
 
 asn1.js@^5.2.0:
   version "5.4.1"
@@ -5420,7 +5423,7 @@ kind-of@^5.0.0:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-5.1.0.tgz#729c91e2d857b7a419a1f9aa65685c4c33f5845d"
   integrity sha512-NGEErnH6F2vUuXDh+OlbcKW7/wOcfdRHaZ7VWtqCztfHri/++YKmP51OdWeGPuqCOba6kk2OTe5d02VmTB80Pw==
 
-kind-of@^6.0.0, kind-of@^6.0.2:
+kind-of@^6.0.0, kind-of@^6.0.2, kind-of@^6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
@@ -6268,6 +6271,13 @@ opn@^5.5.0:
   integrity sha512-PqHpggC9bLV0VeWcdKhkpxY+3JTzetLSqTCWL/z/tFIbI6G8JCjondXklT1JinczLz2Xib62sSp0T/gKT4KksA==
   dependencies:
     is-wsl "^1.1.0"
+
+option-validator@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.npm.taobao.org/option-validator/download/option-validator-2.0.6.tgz#a314dae65e26db5f948ef0ff96fc88f18bb76ed6"
+  integrity sha1-oxTa5l4m21+UjvD/lvyI8Yu3btY=
+  dependencies:
+    kind-of "^6.0.3"
 
 ora@^3.4.0:
   version "3.4.0"
@@ -7485,6 +7495,11 @@ schema-utils@^3.0.0:
     "@types/json-schema" "^7.0.6"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+screenfull@^5.0.2:
+  version "5.1.0"
+  resolved "https://registry.npm.taobao.org/screenfull/download/screenfull-5.1.0.tgz?cache=0&sync_timestamp=1608796425569&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fscreenfull%2Fdownload%2Fscreenfull-5.1.0.tgz#85c13c70f4ead4c1b8a935c70010dfdcd2c0e5c8"
+  integrity sha1-hcE8cPTq1MG4qTXHABDf3NLA5cg=
 
 select-hose@^2.0.0:
   version "2.0.0"

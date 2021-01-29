@@ -100,7 +100,7 @@
 
 <script>
 // @ is an alias to /src
-import VideoPlayer from '@/components/LivisPlayer.vue'
+import VideoPlayer from '@/components/VideoPlayer.vue'
 import {
   MovieBoard,
   DEFAULT_ICON_CONFIGS,
