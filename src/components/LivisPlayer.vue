@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       options: {
-        poster: 'https://i.loli.net/2021/01/15/qoaHymLdRsFUbZM.jpg',
+        poster: '../assets/th.jpg',
         volume: 0.5,
         muted: false,
         autoplay: false,

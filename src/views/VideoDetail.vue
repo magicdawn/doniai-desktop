@@ -125,7 +125,7 @@ export default {
         url: '',
       },
       set_movie_url: '',
-      is_live: false,
+      is_live: true,
       movie_url: '',
       hackReset: false,
     }

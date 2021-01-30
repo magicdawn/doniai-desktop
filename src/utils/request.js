@@ -2,11 +2,11 @@ import axios from 'axios'
 
 // 环境的切换
 if (process.env.NODE_ENV == 'development') {
-  axios.defaults.baseURL = '/'
+  axios.defaults.baseURL = 'https://desktop.doniai.com'
 } else if (process.env.NODE_ENV == 'debug') {
-  axios.defaults.baseURL = '/'
+  axios.defaults.baseURL = 'https://desktop.doniai.com'
 } else if (process.env.NODE_ENV == 'production') {
-  axios.defaults.baseURL = '/'
+  axios.defaults.baseURL = 'https://desktop.doniai.com'
 }
 
 // 请求超时时间

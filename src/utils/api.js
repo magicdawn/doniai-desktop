@@ -1,6 +1,6 @@
 import request from './request'
 const querystring = require('querystring')
-const ApiVersion = '/api/api'
+const ApiVersion = '/api'
 
 export async function getVideos(params) {
   return request('get', `${ApiVersion}/live?${querystring.stringify(params)}`)
