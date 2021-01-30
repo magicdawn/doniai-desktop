@@ -40,7 +40,7 @@
       <div class="video-box">
         <div class="columns">
           <div class="column video-title-box">
-            <div><h3 class="video-title">斗罗大陆</h3></div>
+            <div><h3 class="video-title">{{live_data.title}}</h3></div>
             <div>
               <button
                 class="button is-small is-success is-rounded"
