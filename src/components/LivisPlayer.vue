@@ -35,6 +35,7 @@ export default {
         },
       },
       live_url: '',
+      live_is: true,
     }
   },
   props: {
@@ -54,9 +55,16 @@ export default {
       },
       deep: true,
     },
+    is_live: {
+      handler(n, o) {
+        this.live_is = n
+      },
+      deep: true,
+    },
   },
   mounted() {
     this.live_url = this.video_url
+    this.live_is = this.is_live
     this.loadHls()
   },
   methods: {
@@ -64,7 +72,7 @@ export default {
       let bindEle = { container: '#video-box' }
       let hlsOption = {
         url: this.live_url,
-        isLive: this.is_live,
+        isLive: this.live_is,
         customType: {
           m3u8: function(video, url) {
             let hls = new Hls()
