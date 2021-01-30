@@ -60,7 +60,7 @@ Vue.use(VueRouter)
     name: 'Tools',
     component: () => import('../views/tools/Index.vue'),
     children: [
-      {path: '', name: 'ToolsList', component: () => import('../views/tools/ext/List.vue')},
+      {path: 'list', name: 'ToolsList', component: () => import('../views/tools/ext/List.vue')},
       {path: 'ticket', name: 'ToolsTicket', component: () => import('../views/tools/ext/Ticket.vue')},
     ]
   }

@@ -23,60 +23,63 @@
         <div class="ls-title">
           <span class="ls-text">筱知识</span>
         </div>
-        <div class="ls-menu-box">
-          <span class="ls-text"><two-ellipses theme="outline" size="14" fill="#333"/></span>
-          <span class="ls-text ls-bold black ml2">央视TV</span>
-        </div>
-        <div class="ls-menu-box">
-          <span class="ls-text"><tv theme="outline" size="14" fill="#333"/></span>
-          <span class="ls-text ls-bold black ml2">热门卫视</span>
-        </div>
-        <div class="ls-menu-box">
-          <span class="ls-text"><xigua theme="outline" size="14" fill="#333"/></span>
-          <span class="ls-text ls-bold black ml2">热门直播</span>
-        </div>
-        <div class="ls-menu-box">
-          <span class="ls-text"><movie-board theme="outline" size="14" fill="#333"/></span>
-          <span class="ls-text ls-bold black ml2">影音娱乐</span>
+        <div
+          class="ls-menu-box"
+          v-for="(category, index) in categories"
+          :key="index"
+          @click="selectedCategory(category.category_id)"
+        >
+          <span class="ls-text"
+            ><tv theme="outline" size="14" fill="#333"
+          /></span>
+          <span class="ls-text ls-bold black ml2">{{ category.name }}</span>
         </div>
       </div>
     </div>
     <div class="ls-section-box">
       <div class="video-box">
-         <div class="columns is-multiline is-fullheight">
-            <div class="column is-4" v-for="(m, index) in 10" :key="index">
-              <div class="card large">
-                <div class="card-image">
-                  <figure class="image is-16by9">
-                    <img
-                      src="../assets/th.jpg"
-                      alt="Image"
-                    />
-                  </figure>
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-left">
-                      <figure class="image is-48x48">
-                        <img class="is-rounded" src="../assets/avatars/01.jpg" alt="Image"/>
-                      </figure>
-                    </div>
-                    <div class="media-content">
-                      <p class="title is-6 no-padding">LPL夏季赛W10D7</p>
-                      <p>
-                        <span class="title is-7"
-                          ><a href="http://twitter.com/twitterid">
-                            2020.09.08 - 2020.09.09
-                          </a></span
-                        >
-                      </p>
-                    </div>
-                    <i class="far fa-play-circle play" @click="jumpVideoPlayer(index)"></i>
+        <div class="columns is-multiline is-fullheight">
+          <div
+            class="column is-4"
+            v-for="(live, index) in liveList"
+            :key="index"
+          >
+            <div class="card large">
+              <div class="card-image">
+                <figure class="image is-16by9">
+                  <img src="../assets/th.jpg" alt="Image" />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-48x48">
+                      <img
+                        class="is-rounded"
+                        src="../assets/avatars/01.jpg"
+                        alt="Image"
+                      />
+                    </figure>
                   </div>
+                  <div class="media-content">
+                    <p class="title is-6 no-padding">{{ live.title }}</p>
+                    <p>
+                      <span class="title is-7"
+                        ><a href="http://twitter.com/twitterid">
+                          2020.09.08 - 2020.09.09
+                        </a></span
+                      >
+                    </p>
+                  </div>
+                  <i
+                    class="far fa-play-circle play"
+                    @click="jumpVideoPlayer(live)"
+                  ></i>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
@@ -84,11 +87,18 @@
 
 <script>
 // @ is an alias to /src
-import { TwoEllipses, Tv, Xigua, MovieBoard, DEFAULT_ICON_CONFIGS } from '@icon-park/vue'
+import { getVideos, getCategories } from '../utils/api'
+import {
+  TwoEllipses,
+  Tv,
+  Xigua,
+  MovieBoard,
+  DEFAULT_ICON_CONFIGS,
+} from '@icon-park/vue'
 const IconConfig = { ...DEFAULT_ICON_CONFIGS, prefix: 'icon' }
 
 export default {
-  name: 'Video1',
+  name: 'VideoDetail',
   provide() {
     return {
       ICON_CONFIGS: IconConfig,
@@ -96,7 +106,13 @@ export default {
   },
   data() {
     return {
+      categories: [],
+      liveList: [],
     }
+  },
+  mounted() {
+    this.getAllCategory()
+    this.getAllVideo()
   },
   components: {
     TwoEllipses,
@@ -104,11 +120,32 @@ export default {
     Xigua,
     MovieBoard,
   },
-   methods: {
-    jumpVideoPlayer(index) {
-      this.$router.push({path: `/video_detail/${index}`})
-    }
-  }
+  methods: {
+    selectedCategory(category_id) {
+      this.getAllVideo({ category_id: category_id })
+    },
+    async getAllVideo(params = {}) {
+      const { data } = await getVideos(params)
+      if (data.code === 0) {
+        this.liveList = data.data
+      }
+    },
+    async getAllCategory() {
+      const { data } = await getCategories()
+      if (data.code === 0) {
+        this.categories = data.data
+      }
+    },
+    jumpVideoPlayer(video) {
+      console.log(video)
+      this.$router.push({
+        path: `/video_detail/${video.video_id}`,
+        query: {
+          category_id: video.category_id,
+        },
+      })
+    },
+  },
 }
 </script>
 
@@ -199,7 +236,7 @@ export default {
   font-size: 36px;
   margin: -100px 0 0 -25px;
   transform: scale(2);
-  transition: all .25s ease-out;
+  transition: all 0.25s ease-out;
   color: #fff;
   &:hover {
     opacity: 0.9;

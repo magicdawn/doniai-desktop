@@ -98,7 +98,7 @@
           </ul>
         </div>
       </div>
-      <div>
+      <div class="content-box">
         <router-view />
       </div>
     </div>
@@ -156,6 +156,11 @@ export default {
   position: relative;
   overflow: hidden;
   height: 810px;
+}
+
+.content-box {
+  height: 810px;
+  overflow-y: auto;
 }
 
 .operate-nav {

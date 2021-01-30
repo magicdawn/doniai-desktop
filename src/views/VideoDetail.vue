@@ -23,29 +23,16 @@
         <div class="ls-title">
           <span class="ls-text">推荐列表</span>
         </div>
-        <div class="ls-menu-box">
+        <div
+          class="ls-menu-box"
+          v-for="(hot, index) in hot_lives"
+          :key="index"
+          @click="changeLive(hot)"
+        >
           <span class="ls-text"
-            ><movie-board theme="outline" size="14" fill="#333"
+            ><tv theme="outline" size="14" fill="#333"
           /></span>
-          <span class="ls-text ls-bold black ml2">斗罗大陆</span>
-        </div>
-        <div class="ls-menu-box">
-          <span class="ls-text"
-            ><movie-board theme="outline" size="14" fill="#333"
-          /></span>
-          <span class="ls-text ls-bold black ml2">斗破苍穹</span>
-        </div>
-        <div class="ls-menu-box">
-          <span class="ls-text"
-            ><movie-board theme="outline" size="14" fill="#333"
-          /></span>
-          <span class="ls-text ls-bold black ml2">唐伯虎点秋香</span>
-        </div>
-        <div class="ls-menu-box">
-          <span class="ls-text"
-            ><movie-board theme="outline" size="14" fill="#333"
-          /></span>
-          <span class="ls-text ls-bold black ml2">剑雨</span>
+          <span class="ls-text ls-bold black ml2">{{ hot.title }}</span>
         </div>
       </div>
     </div>
@@ -55,12 +42,23 @@
           <div class="column video-title-box">
             <div><h3 class="video-title">斗罗大陆</h3></div>
             <div>
-              <button class="button is-small is-success is-rounded" @click="setVideoUrlModel = true">设置播放源</button>
+              <button
+                class="button is-small is-success is-rounded"
+                @click="setVideoUrlModel = true"
+              >
+                设置播放源
+              </button>
             </div>
           </div>
         </div>
         <div class="columns">
-          <div class="column"><VideoPlayer :video_url="set_movie_url"/></div>
+          <div class="column">
+            <VideoPlayer
+              :video_url="live_data.url"
+              :is_live="is_live"
+              v-if="hackReset"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -90,7 +88,9 @@
             </b-field>
           </section>
           <footer class="modal-card-foot">
-            <button class="button is-primary is-small" @click="setVideoUrl">播放</button>
+            <button class="button is-primary is-small" @click="setVideoUrl">
+              播放
+            </button>
           </footer>
         </div>
       </form>
@@ -101,10 +101,8 @@
 <script>
 // @ is an alias to /src
 import VideoPlayer from '@/components/LivisPlayer.vue'
-import {
-  MovieBoard,
-  DEFAULT_ICON_CONFIGS,
-} from '@icon-park/vue'
+import { getVideo, getHotVideos } from '../utils/api'
+import { Tv, DEFAULT_ICON_CONFIGS } from '@icon-park/vue'
 const IconConfig = { ...DEFAULT_ICON_CONFIGS, prefix: 'icon' }
 
 export default {
@@ -117,17 +115,53 @@ export default {
   data() {
     return {
       setVideoUrlModel: false,
+      hot_lives: [],
+      live_data: {
+        video_id: null,
+        title: null,
+        cover_url: '',
+        play_nums: 0,
+        remark: '',
+        url: '',
+      },
       set_movie_url: '',
-      movie_url: ''
+      is_live: false,
+      movie_url: '',
+      hackReset: false,
     }
+  },
+  mounted() {
+    this.getAllHotVideo()
+    this.getVideoDetail()
   },
   components: {
     VideoPlayer,
-    MovieBoard,
+    Tv,
   },
   methods: {
-    jumpVideoPlayer(index) {
-      this.$router.push({ path: `/video_detail/${index}` })
+    async getVideoDetail() {
+      let video_id = this.$route.params.id
+      const { data } = await getVideo(video_id)
+      this.live_data = { ...data.data }
+      this.is_live = data.data.type === 1 ? true : false
+      this.hackReset = true
+      console.log(this.live_data)
+    },
+    async getAllHotVideo() {
+      let video_id = this.$route.params.id
+      const { data } = await getHotVideos(video_id)
+      this.hot_lives = data.data
+    },
+    changeLive(live) {
+      this.live_data = { ...live }
+      this.is_live = live.type === 1 ? true : false
+      this.reloadLoadPlayer()
+    },
+    reloadLoadPlayer() {
+      this.hackReset = false
+      this.$nextTick(() => {
+        this.hackReset = true
+      })
     },
     hiddenSetVideoUrlModelModel() {
       this.setVideoUrlModel = false
@@ -136,7 +170,7 @@ export default {
       console.log(this.movie_url)
       this.set_movie_url = this.movie_url
       this.hiddenSetVideoUrlModelModel()
-    }
+    },
   },
 }
 </script>

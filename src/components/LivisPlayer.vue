@@ -1,19 +1,18 @@
 <template>
-  <div class="videoWrap" id="video-box">
+  <div class="videoWrap" id="video-box" v-if="video_url !== null">
     asda
   </div>
 </template>
 
 <script>
-import { getResourceType, isEmpty, isVideo } from "@/utils/helper";
-import Artplayer from 'artplayer';
-import Hls from "hls.js";
+import Artplayer from 'artplayer'
+import Hls from 'hls.js'
 export default {
-  name: "LivisPlayer",
+  name: 'LivisPlayer',
   data() {
     return {
       options: {
-        poster: "https://i.loli.net/2021/01/15/qoaHymLdRsFUbZM.jpg",
+        poster: 'https://i.loli.net/2021/01/15/qoaHymLdRsFUbZM.jpg',
         volume: 0.5,
         muted: false,
         autoplay: false,
@@ -27,15 +26,16 @@ export default {
         fullscreen: true,
         fullscreenWeb: true,
         mutex: true,
-        theme: "#ffad00",
-        lang: "zh-cn",
+        theme: '#ffad00',
+        lang: 'zh-cn',
         moreVideoAttr: {
-          crossOrigin: "anonymous",
+          crossOrigin: 'anonymous',
           'webkit-playsinline': true,
           playsInline: true,
-        }
-      }
-    };
+        },
+      },
+      live_url: '',
+    }
   },
   props: {
     video_url: {
@@ -44,29 +44,39 @@ export default {
     },
     is_live: {
       type: Boolean,
-      required: false
-    }
+      required: false,
+    },
+  },
+  watch: {
+    video_url: {
+      handler(n, o) {
+        this.live_url = n
+      },
+      deep: true,
+    },
   },
   mounted() {
+    this.live_url = this.video_url
     this.loadHls()
   },
   methods: {
     loadHls() {
-      let bindEle = {container: '#video-box'}
+      let bindEle = { container: '#video-box' }
       let hlsOption = {
-        url: 'https://hlstct.douyucdn2.cn/dyliveflv3a/674441rwHaJrwIwg.m3u8?txSecret=914de5bf27e9409a9d10474111d7afde&txTime=6013f1ba&token=h5-douyu-0-674441-3f4662f3a0d86d7b8365c6e04ce66e22&did=10000000000000000000000000001501&origin=tct&vhost=play4',
+        url: this.live_url,
+        isLive: this.is_live,
         customType: {
-          m3u8: function (video, url) {
-            let hls = new Hls();
-            hls.loadSource(url);
-            hls.attachMedia(video);
+          m3u8: function(video, url) {
+            let hls = new Hls()
+            hls.loadSource(url)
+            hls.attachMedia(video)
           },
-        }
+        },
       }
-      let art = new Artplayer({...bindEle, ...this.options, ...hlsOption})
-    }
-  }
-};
+      let art = new Artplayer({ ...bindEle, ...this.options, ...hlsOption })
+    },
+  },
+}
 </script>
 
 <style scoped lang="less">
