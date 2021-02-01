@@ -57,6 +57,7 @@
           <div class="column">
             <VideoPlayer
               :video_url="live_data.url"
+              :is_live="is_live"
               v-if="hackReset"
             />
           </div>
@@ -143,6 +144,7 @@ export default {
       let video_id = this.$route.params.id
       const { data } = await getVideo(video_id)
       this.live_data = { ...data.data }
+      this.is_live = data.data.type === 1 ? true : false
       this.hackReset = true
     },
     async getAllHotVideo() {
@@ -152,6 +154,7 @@ export default {
     },
     changeLive(live) {
       this.live_data = { ...live }
+      this.is_live = live.type === 1 ? true : false
       this.reloadLoadPlayer()
     },
     reloadLoadPlayer() {

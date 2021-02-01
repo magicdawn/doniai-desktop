@@ -27,8 +27,8 @@ export default {
         aspectRatio: true,
         fullscreen: true,
         fullscreenWeb: true,
-        hotkey: true,
         mutex: true,
+        hotkey: true,
         theme: '#ffad00',
         lang: 'zh-cn',
         moreVideoAttr: {
@@ -38,12 +38,16 @@ export default {
         },
       },
       live_url: '',
-      player: null,
+      live_is: true,
     }
   },
   props: {
     video_url: {
       type: String,
+      required: false,
+    },
+    is_live: {
+      type: Boolean,
       required: false,
     },
   },
@@ -54,25 +58,29 @@ export default {
       },
       deep: true,
     },
+    is_live: {
+      handler(n, o) {
+        this.live_is = n
+      },
+      deep: true,
+    },
   },
   mounted() {
     this.live_url = this.video_url
+    this.live_is = this.is_live
     this.byTypeLoad(this.video_url)
-  },
-  destroyed() {
-    this.destoryPlayer()
   },
   methods: {
     loadHls() {
       let bindEle = { container: '#video-box' }
       let hlsOption = {
         url: this.live_url,
-        isLive: true,
+        isLive: this.live_is,
         customType: {
           m3u8: function(video, url) {
-            this.player = new Hls()
-            this.player.loadSource(url)
-            this.player.attachMedia(video)
+            let hls = new Hls()
+            hls.loadSource(url)
+            hls.attachMedia(video)
           },
         },
       }
@@ -83,15 +91,15 @@ export default {
       let bindEle = { container: '#video-box' }
       let hlsOption = {
         url: this.live_url,
-        isLive: true,
+        isLive: this.live_is,
         customType: {
           flv(video, url) {
-            this.player = flvjs.createPlayer({
+            let flv = flvjs.createPlayer({
               type: 'flv',
               url: url,
             })
-            this.player.attachMediaElement(video)
-            this.player.load()
+            flv.attachMediaElement(video)
+            flv.load()
           },
         },
       }
@@ -114,14 +122,7 @@ export default {
       } else if (live_type === 'flv') {
         this.loadFlv()
       } else {
-        console.log('adad')
         this.loadOther()
-      }
-    },
-
-    destoryPlayer() {
-      if (this.player) {
-        this.player.destory()
       }
     },
   },
