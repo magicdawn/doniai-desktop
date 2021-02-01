@@ -38,6 +38,7 @@ export default {
       },
       live_url: '',
       live_is: true,
+      player: null,
     }
   },
   props: {
@@ -69,6 +70,9 @@ export default {
     this.live_is = this.is_live
     this.byTypeLoad(this.video_url)
   },
+  destroyed() {
+    this.destoryFlv()
+  },
   methods: {
     loadHls() {
       let bindEle = { container: '#video-box' }
@@ -77,9 +81,9 @@ export default {
         isLive: this.live_is,
         customType: {
           m3u8: function(video, url) {
-            let hls = new Hls()
-            hls.loadSource(url)
-            hls.attachMedia(video)
+            this.player = new Hls()
+            this.player.loadSource(url)
+            this.player.attachMedia(video)
           },
         },
       }
@@ -92,13 +96,13 @@ export default {
         url: this.live_url,
         isLive: this.live_is,
         customType: {
-          flv: function(video, url) {
-            const flvPlayer = flvjs.createPlayer({
+          flv(video, url) {
+            this.player = flvjs.createPlayer({
               type: 'flv',
               url: url,
             })
-            flvPlayer.attachMediaElement(video)
-            flvPlayer.load()
+            this.player.attachMediaElement(video)
+            this.player.load()
           },
         },
       }
@@ -107,11 +111,11 @@ export default {
 
     loadOther() {
       let bindEle = { container: '#video-box' }
-      let hlsOption = {
+      let otherOption = {
         url: this.live_url,
         isLive: false,
       }
-      let art = new Artplayer({ ...bindEle, ...this.options, ...hlsOption })
+      let art = new Artplayer({ ...bindEle, ...this.options, ...otherOption })
     },
 
     byTypeLoad(live_url) {
@@ -122,6 +126,14 @@ export default {
         this.loadFlv()
       } else {
         this.loadOther()
+      }
+    },
+
+    destoryFlv() {
+      if (this.player) {
+        this.player.pause()
+        this.player.destory()
+        this.player = null
       }
     },
   },

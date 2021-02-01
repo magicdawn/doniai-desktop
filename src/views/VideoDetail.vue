@@ -40,7 +40,9 @@
       <div class="video-box">
         <div class="columns">
           <div class="column video-title-box">
-            <div><h3 class="video-title">{{live_data.title}}</h3></div>
+            <div>
+              <h3 class="video-title">{{ live_data.title }}</h3>
+            </div>
             <div>
               <button
                 class="button is-small is-success is-rounded"
@@ -124,9 +126,8 @@ export default {
         remark: '',
         url: '',
       },
-      set_movie_url: '',
-      is_live: true,
       movie_url: '',
+      is_live: true,
       hackReset: false,
     }
   },
@@ -145,7 +146,6 @@ export default {
       this.live_data = { ...data.data }
       this.is_live = data.data.type === 1 ? true : false
       this.hackReset = true
-      console.log(this.live_data)
     },
     async getAllHotVideo() {
       let video_id = this.$route.params.id
@@ -167,9 +167,10 @@ export default {
       this.setVideoUrlModel = false
     },
     setVideoUrl() {
-      console.log(this.movie_url)
-      this.set_movie_url = this.movie_url
+      this.live_data.url = this.movie_url
+      this.live_data.title = '自定义直播源'
       this.hiddenSetVideoUrlModelModel()
+      this.reloadLoadPlayer()
     },
   },
 }

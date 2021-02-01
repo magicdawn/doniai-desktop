@@ -88,13 +88,7 @@
 <script>
 // @ is an alias to /src
 import { getVideos, getCategories } from '../utils/api'
-import {
-  TwoEllipses,
-  Tv,
-  Xigua,
-  MovieBoard,
-  DEFAULT_ICON_CONFIGS,
-} from '@icon-park/vue'
+import { Tv, DEFAULT_ICON_CONFIGS } from '@icon-park/vue'
 const IconConfig = { ...DEFAULT_ICON_CONFIGS, prefix: 'icon' }
 
 export default {
@@ -115,10 +109,7 @@ export default {
     this.getAllVideo()
   },
   components: {
-    TwoEllipses,
     Tv,
-    Xigua,
-    MovieBoard,
   },
   methods: {
     selectedCategory(category_id) {
@@ -137,7 +128,6 @@ export default {
       }
     },
     jumpVideoPlayer(video) {
-      console.log(video)
       this.$router.push({
         path: `/video_detail/${video.video_id}`,
         query: {
