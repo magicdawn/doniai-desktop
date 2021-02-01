@@ -45,7 +45,7 @@ export default {
     video_url: {
       type: String,
       required: false,
-    }
+    },
   },
   watch: {
     video_url: {
@@ -53,7 +53,7 @@ export default {
         this.live_url = n
       },
       deep: true,
-    }
+    },
   },
   mounted() {
     this.live_url = this.video_url
@@ -95,7 +95,6 @@ export default {
           },
         },
       }
-      console.log({ ...bindEle, ...this.options, ...hlsOption })
       let art = new Artplayer({ ...bindEle, ...this.options, ...hlsOption })
     },
 
