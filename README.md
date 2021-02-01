@@ -57,6 +57,9 @@ $ yarn electron-build
 #### 待办事项
 ![effect](/example/images/4.png)
 
+#### 直播TV
+![effect](/example/images/5.png)
+
 ## 所用依赖，感谢这些好用的扩展包
 
 - [Electron](https://www.electronjs.org/)
