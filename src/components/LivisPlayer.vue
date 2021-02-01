@@ -23,10 +23,10 @@ export default {
         screenshot: true,
         setting: true,
         loop: true,
-        playbackRate: true,
         aspectRatio: true,
         fullscreen: true,
         fullscreenWeb: true,
+        hotkey: true,
         mutex: true,
         theme: '#ffad00',
         lang: 'zh-cn',
@@ -71,7 +71,7 @@ export default {
     this.byTypeLoad(this.video_url)
   },
   destroyed() {
-    this.destoryFlv()
+    this.destoryPlayer()
   },
   methods: {
     loadHls() {
@@ -79,6 +79,7 @@ export default {
       let hlsOption = {
         url: this.live_url,
         isLive: this.live_is,
+        playbackRate: false,
         customType: {
           m3u8: function(video, url) {
             this.player = new Hls()
@@ -95,6 +96,7 @@ export default {
       let hlsOption = {
         url: this.live_url,
         isLive: this.live_is,
+        playbackRate: false,
         customType: {
           flv(video, url) {
             this.player = flvjs.createPlayer({
@@ -114,6 +116,7 @@ export default {
       let otherOption = {
         url: this.live_url,
         isLive: false,
+        playbackRate: true,
       }
       let art = new Artplayer({ ...bindEle, ...this.options, ...otherOption })
     },
@@ -129,11 +132,9 @@ export default {
       }
     },
 
-    destoryFlv() {
+    destoryPlayer() {
       if (this.player) {
-        this.player.pause()
         this.player.destory()
-        this.player = null
       }
     },
   },
