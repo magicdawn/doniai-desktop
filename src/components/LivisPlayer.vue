@@ -20,6 +20,7 @@ export default {
         autoplay: true,
         pip: true,
         autoSize: true,
+        playbackRate: false,
         screenshot: true,
         setting: true,
         loop: true,
@@ -37,7 +38,6 @@ export default {
         },
       },
       live_url: '',
-      live_is: true,
       player: null,
     }
   },
@@ -45,11 +45,7 @@ export default {
     video_url: {
       type: String,
       required: false,
-    },
-    is_live: {
-      type: Boolean,
-      required: false,
-    },
+    }
   },
   watch: {
     video_url: {
@@ -57,17 +53,10 @@ export default {
         this.live_url = n
       },
       deep: true,
-    },
-    is_live: {
-      handler(n, o) {
-        this.live_is = n
-      },
-      deep: true,
-    },
+    }
   },
   mounted() {
     this.live_url = this.video_url
-    this.live_is = this.is_live
     this.byTypeLoad(this.video_url)
   },
   destroyed() {
@@ -78,8 +67,7 @@ export default {
       let bindEle = { container: '#video-box' }
       let hlsOption = {
         url: this.live_url,
-        isLive: this.live_is,
-        playbackRate: false,
+        isLive: true,
         customType: {
           m3u8: function(video, url) {
             this.player = new Hls()
@@ -95,8 +83,7 @@ export default {
       let bindEle = { container: '#video-box' }
       let hlsOption = {
         url: this.live_url,
-        isLive: this.live_is,
-        playbackRate: false,
+        isLive: true,
         customType: {
           flv(video, url) {
             this.player = flvjs.createPlayer({
@@ -108,6 +95,7 @@ export default {
           },
         },
       }
+      console.log({ ...bindEle, ...this.options, ...hlsOption })
       let art = new Artplayer({ ...bindEle, ...this.options, ...hlsOption })
     },
 
@@ -116,7 +104,6 @@ export default {
       let otherOption = {
         url: this.live_url,
         isLive: false,
-        playbackRate: true,
       }
       let art = new Artplayer({ ...bindEle, ...this.options, ...otherOption })
     },
@@ -128,6 +115,7 @@ export default {
       } else if (live_type === 'flv') {
         this.loadFlv()
       } else {
+        console.log('adad')
         this.loadOther()
       }
     },
