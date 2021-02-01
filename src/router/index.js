@@ -58,10 +58,11 @@ Vue.use(VueRouter)
   {
     path: '/tools',
     name: 'Tools',
+    redirect: '/tools/list',
     component: () => import('../views/tools/Index.vue'),
     children: [
-      {path: 'list', name: 'ToolsList', component: () => import('../views/tools/ext/List.vue')},
-      {path: 'ticket', name: 'ToolsTicket', component: () => import('../views/tools/ext/Ticket.vue')},
+      {path: '/tools/list', name: 'ToolsList', component: () => import('../views/tools/ext/List.vue')},
+      {path: '/tools/ticket', name: 'ToolsTicket', component: () => import('../views/tools/ext/Ticket.vue')},
     ]
   }
 ]

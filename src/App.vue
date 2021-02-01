@@ -160,7 +160,6 @@ export default {
 
 .content-box {
   height: 810px;
-  overflow-y: auto;
 }
 
 .operate-nav {

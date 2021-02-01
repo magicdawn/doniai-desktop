@@ -183,7 +183,8 @@ export default {
 
 .ls-section-box {
   width: 100%;
-  height: 100%;
+  height: 800px;
+  overflow-y: auto;
 }
 
 .auto-overflow {

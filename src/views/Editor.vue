@@ -161,6 +161,13 @@ export default {
 .editor {
   display: flex;
   justify-content: flex-start;
+  .vditor-toolbar {
+    padding-left: 0!important;
+  }
+}
+
+.vditor-reset {
+  padding: 10px !important;
 }
 
 .ls-main-title {

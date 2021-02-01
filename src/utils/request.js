@@ -4,7 +4,7 @@ import axios from 'axios'
 if (process.env.NODE_ENV == 'development') {
   axios.defaults.baseURL = 'https://desktop.doniai.com'
 } else if (process.env.NODE_ENV == 'debug') {
-  axios.defaults.baseURL = 'https://desktop.doniai.com'
+  axios.defaults.baseURL = '/'
 } else if (process.env.NODE_ENV == 'production') {
   axios.defaults.baseURL = 'https://desktop.doniai.com'
 }

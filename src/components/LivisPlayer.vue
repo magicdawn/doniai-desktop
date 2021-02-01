@@ -1,21 +1,23 @@
 <template>
   <div class="videoWrap" id="video-box" v-if="video_url !== null">
-    asda
+    视频格式暂不支持
   </div>
 </template>
 
 <script>
+import { getResourceType } from '../utils/helper'
 import Artplayer from 'artplayer'
 import Hls from 'hls.js'
+import flvjs from 'flv.js'
 export default {
   name: 'LivisPlayer',
   data() {
     return {
       options: {
-        poster: '../assets/th.jpg',
+        poster: 'https://i.loli.net/2021/01/15/xsjTIfymPv9cKWu.jpg',
         volume: 0.5,
         muted: false,
-        autoplay: false,
+        autoplay: true,
         pip: true,
         autoSize: true,
         screenshot: true,
@@ -65,7 +67,7 @@ export default {
   mounted() {
     this.live_url = this.video_url
     this.live_is = this.is_live
-    this.loadHls()
+    this.byTypeLoad(this.video_url)
   },
   methods: {
     loadHls() {
@@ -82,6 +84,45 @@ export default {
         },
       }
       let art = new Artplayer({ ...bindEle, ...this.options, ...hlsOption })
+    },
+
+    loadFlv() {
+      let bindEle = { container: '#video-box' }
+      let hlsOption = {
+        url: this.live_url,
+        isLive: this.live_is,
+        customType: {
+          flv: function(video, url) {
+            const flvPlayer = flvjs.createPlayer({
+              type: 'flv',
+              url: url,
+            })
+            flvPlayer.attachMediaElement(video)
+            flvPlayer.load()
+          },
+        },
+      }
+      let art = new Artplayer({ ...bindEle, ...this.options, ...hlsOption })
+    },
+
+    loadOther() {
+      let bindEle = { container: '#video-box' }
+      let hlsOption = {
+        url: this.live_url,
+        isLive: false,
+      }
+      let art = new Artplayer({ ...bindEle, ...this.options, ...hlsOption })
+    },
+
+    byTypeLoad(live_url) {
+      let live_type = getResourceType(live_url)
+      if (live_type === 'hls') {
+        this.loadHls()
+      } else if (live_type === 'flv') {
+        this.loadFlv()
+      } else {
+        this.loadOther()
+      }
     },
   },
 }
