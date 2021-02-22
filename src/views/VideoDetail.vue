@@ -168,9 +168,11 @@ export default {
     },
     setVideoUrl() {
       this.live_data.url = this.movie_url
+      this.live_data.video_id = 0
       this.live_data.title = '自定义直播源'
-      this.hiddenSetVideoUrlModelModel()
+      this.live_data.remark = '未知源'
       this.reloadLoadPlayer()
+      this.hiddenSetVideoUrlModelModel()
     },
   },
 }
