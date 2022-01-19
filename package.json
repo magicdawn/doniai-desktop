@@ -7,7 +7,8 @@
 		"serve": "vue-cli-service serve",
 		"build": "vue-cli-service build",
 		"electron-dev": "node electron/config/electron-run-dev.js",
-		"electron-build": "vue-cli-service build && node electron/config/electron-build-pro.js && electron-builder --dir"
+		"electron-build-win": "vue-cli-service build && node electron/config/electron-build-pro.js && electron-builder --dir",
+		"electron-build-mac": "electron-builder --mac"
 	},
 	"build": {
 		"productName": "doniai-tools",
@@ -22,7 +23,15 @@
 			"build/vue-build/**/*"
 		],
 		"win": {
-			"icon": "electron/dev/img/ico.ico"
+			"icon": "electron/dev/img/icon.ico"
+		},
+		"mac": {
+			"icon": "electron/dev/img/icon.icns",
+			"type": "distribution",
+			"target": [
+				"dmg",
+				"zip"
+			]
 		}
 	},
 	"description": "这是一款个人工具助手软件",

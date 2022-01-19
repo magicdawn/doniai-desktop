@@ -14,7 +14,7 @@
         </li>
         <li>
           <b-tooltip label="屏幕截图" type="is-dark" position="is-bottom">
-            <a href=""><i class="fas fa-cut"></i></a>
+            <a href="javascript(0)" @click="startCapture"><i class="fas fa-cut"></i></a>
           </b-tooltip>
         </li>
         <li>
@@ -37,10 +37,16 @@
 </template>
 
 <script>
+const ipc = window.require ? window.require('electron').ipcRenderer : require('electron').ipcRenderer
 export default {
   name: 'ChatOperate',
   props: {
     msg: String
+  },
+  methods: {
+    startCapture() {
+      ipc.send('capture-screen')
+    }
   }
 }
 </script>

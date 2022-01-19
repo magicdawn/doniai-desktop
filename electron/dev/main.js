@@ -1,4 +1,4 @@
-const { app, Menu, Tray, BrowserWindow, ipcMain } = require('electron')
+const { app, Menu, Tray, BrowserWindow, globalShortcut, ipcMain } = require('electron')
 const path = require('path')
 
 let appTray = null
