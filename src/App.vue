@@ -128,6 +128,10 @@ export default {
   height: 1px;
 }
 
+body {
+  height: 100vh;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -146,6 +150,9 @@ export default {
   position: relative;
   background-color: #6b56f7;
   padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .ls-avatar {
@@ -155,11 +162,11 @@ export default {
 .work-box {
   position: relative;
   overflow: hidden;
-  height: 810px;
+  // height: 810px;
 }
 
 .content-box {
-  height: 810px;
+  // height: 810px;
 }
 
 .operate-nav {
@@ -173,13 +180,14 @@ export default {
 }
 
 .side-top {
-  top: 0;
+  // top: 0;
   width: 100%;
 }
 
 .side-middle {
-  margin-top: 266px;
+  // margin-top: 266px;
   width: 100%;
+  flex-grow: 1;
 }
 
 .ls-white {
@@ -187,7 +195,7 @@ export default {
 }
 
 .side-bottom {
-  bottom: 0;
+  // bottom: 0;
   width: 100%;
 }
 
