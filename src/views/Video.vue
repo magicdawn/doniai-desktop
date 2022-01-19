@@ -139,7 +139,7 @@ export default {
 }
 </script>
 
-<style lang="less" scope>
+<style lang="less" scoped>
 .video {
   display: flex;
   justify-content: flex-start;
@@ -175,6 +175,7 @@ export default {
   width: 100%;
   // height: 800px;
   overflow-y: auto;
+	max-height: calc(100vh - 30px); // 30px header drag area
 }
 
 .auto-overflow {
